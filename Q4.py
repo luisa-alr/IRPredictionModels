@@ -81,13 +81,10 @@ plt.savefig("TrainingANDTestIR.jpg", format='jpg', dpi=300, bbox_inches='tight')
 plt.show()
 
 
-
 # Calibrate the models (train)
-# Estimate speed of reversion (a)
-a_estimated = -np.log(train_data['IR'].autocorr(lag=1))
-
 # Initial guess for a, b, sigma
-a = a_estimated #0.1
+# a = -np.log(train_data['IR'].autocorr(lag=1))
+a = 0.1
 b = train_data['IR'].mean()
 sigma = np.std(np.diff(train_data['IR']))
 
@@ -110,8 +107,9 @@ c_result = minimize(
 )
 
 # A) Estimate parameters 𝑎, 𝑏, and 𝜎, extracting the optimized parameters
+print("QUESTION A\n")
 a_opt, b_opt, sigma_opt = v_result.x
-print(f"\nVasicek optimized parameters: a = {a_opt}, b = {b_opt}, sigma = {sigma_opt}")
+print(f"Vasicek optimized parameters: a = {a_opt}, b = {b_opt}, sigma = {sigma_opt}")
 a_opt, b_opt, sigma_opt = c_result.x
 print(f"CIR optimized parameters: a = {a_opt}, b = {b_opt}, sigma = {sigma_opt}\n")
 
@@ -125,6 +123,7 @@ c_mse = mean_squared_error(test_data["IR"], c_test_predictions)
 c_r2 = r2_score(test_data["IR"], c_test_predictions)
 
 # B) Report the forecasted value and associated volatility
+print("QUESTION B\n")
 report_df = pd.DataFrame(
     {
         "Date": test_data["DATE"],
@@ -165,6 +164,7 @@ plt.savefig("ModelsIR.jpg", format='jpg', dpi=300, bbox_inches='tight')
 plt.show()
 
 # C) Compare prediction with actual values. The overall MSE and R2 for the test data
+print("QUESTION C\n")
 print(f"Vasicek Test MSE: {v_mse}")
 print(f"Vasicek Test R²: {v_r2}")
 print(f"CIR Test MSE: {c_mse}")
