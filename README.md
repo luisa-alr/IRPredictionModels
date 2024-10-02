@@ -1,2 +1,2 @@
 # InterestRatePrediction
-Interest Rate Prediction using Vasicek and CIR models.
+Interest Rate Prediction using Vasicek and CIR models
