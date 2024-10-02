@@ -26,18 +26,24 @@ Vasicek and CIR model predictions.
 ---
 
 *  a) Vasicek optimized parameters: a = 0.0018759731562042567, b = 2.5811470673215773, sigma = 0.056765551548106426
+  
       CIR optimized parameters: a = 0.0018759731562042418, b = 2.581146487427231, sigma = 0.05676555154810597
 
 
 *  b) Output of the following table for the test data:
-      Date  Actual_IR  Predicted_IR_Vasicek  Predicted_IR_CIR  Vasicek_volatility  CIR_volatility
+  
+      Date | Actual_IR | Predicted_IR_Vasicek | Predicted_IR_CIR | Vasicek_volatility | CIR_volatility
 
       Vasicek overall volatility: 0.056867995872713725
+
       CIR overall volatility:0.05868268979485365
 
 
 *  c) Vasicek Test MSE: 3.5060524785551763
+  
       Vasicek Test R²: -1.517266789123049
+
       CIR Test MSE: 2.0986433299651184
+
       CIR Test R²: -0.506778688866867
 
